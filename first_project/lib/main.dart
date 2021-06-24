@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './question.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +18,9 @@ class MyAppState extends State<MyApp> {
   var questionIndex = 0;
 
   void answerQuestion() {
-    questionIndex = questionIndex + 1;
+    setState(() {
+      questionIndex = questionIndex + 1;
+    });
     print(questionIndex);
   }
 
@@ -34,7 +37,9 @@ class MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Text(questions[questionIndex]),
+            Question(
+              questions[questionIndex],
+            ),
             // ignore: deprecated_member_use
             RaisedButton(
               child: Text('Answer 1'),
