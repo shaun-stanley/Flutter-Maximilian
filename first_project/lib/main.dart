@@ -4,9 +4,21 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+// Class MyApp takes the template of Class Stateless Widget
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyAppState();
+  }
+}
+
+class MyAppState extends State<MyApp> {
+  var questionIndex = 0;
+
   void answerQuestion() {
-    print('Answer Chosen');
+    questionIndex = questionIndex + 1;
+    print(questionIndex);
   }
 
   @override
@@ -22,7 +34,8 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text('The Question!'),
+            Text(questions[questionIndex]),
+            // ignore: deprecated_member_use
             RaisedButton(
               child: Text('Answer 1'),
               onPressed: answerQuestion,
