@@ -30,6 +30,7 @@ class Result extends StatelessWidget {
             style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
+          // ignore: deprecated_member_use
           FlatButton(onPressed: resetHandler, child: Text('Restart Quiz!'))
         ],
       ),
