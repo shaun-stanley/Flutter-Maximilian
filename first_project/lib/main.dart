@@ -1,6 +1,8 @@
+import 'package:first_project/result.dart';
 import 'package:flutter/material.dart';
-import './question.dart';
-import './answer.dart';
+import './quiz.dart';
+import './result.dart';
+//import './answer.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,49 +19,68 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
-  void _answerQuestion() {
+  var _totalScore = 0;
+
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
+  }
+
+  void _answerQuestion(int score) {
+    _totalScore = _totalScore + score;
+
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
     print(_questionIndex);
   }
 
+  final _questions = [
+    {
+      'questionText': 'What\'s your favorite color?',
+      'answers': [
+        {'text': 'Red', 'score': 0},
+        {'text': 'Black', 'score': 1},
+        {'text': 'Green', 'score': 0},
+        {'text': 'Blue', 'score': 0}
+      ],
+    },
+    {
+      'questionText': 'What\'s your favorite animal?',
+      'answers': [
+        {'text': 'Giraffe', 'score': 0},
+        {'text': 'Dog', 'score': 1},
+        {'text': 'Cat', 'score': 0},
+        {'text': 'Snake', 'score': 0}
+      ],
+    },
+    {
+      'questionText': 'Who\'s your favorite instructer?',
+      'answers': [
+        {'text': 'Debayan', 'score': 0},
+        {'text': 'Max', 'score': 0},
+        {'text': 'David', 'score': 1},
+        {'text': 'Zed', 'score': 0}
+      ],
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      {
-        'questionText': 'What\'s your favorite color?',
-        'answers': ['Red', 'Black', 'Green', 'Blue'],
-      },
-      {
-        'questionText': 'What\'s your favorite animal?',
-        'answers': ['Giraffe', 'Dog', 'Cat', 'Snake'],
-      },
-      {
-        'questionText': 'Who\'s your favorite instructer?',
-        'answers': ['Debayan', 'Max', 'David', 'Zed'],
-      },
-    ];
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Stanley'),
-        ),
-        body: _questionIndex < questions.length
-            ? Column(
-                children: [
-                  Question(
-                    questions[_questionIndex]['questionText'],
-                  ),
-                  // ignore: deprecated_member_use
-                  ...(questions[_questionIndex]['answers'] as List<String>)
-                      .map((answer) {
-                    return Answer(_answerQuestion, answer);
-                  }).toList()
-                ],
-              )
-            : Center(child: Text('All the Questions are done!')),
-      ),
+          appBar: AppBar(
+            title: Text('Stanley'),
+          ),
+          body: _questionIndex < _questions.length
+              ? Quiz(
+                  answerQuestion: _answerQuestion,
+                  questionIndex: _questionIndex,
+                  questions: _questions,
+                )
+              : Result(_totalScore, _resetQuiz)),
     );
   }
 }
