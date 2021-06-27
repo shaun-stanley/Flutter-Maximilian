@@ -1,38 +1,21 @@
 import 'package:flutter/material.dart';
 
+import './text_control.dart';
+
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _MyAppState();
-  }
-}
-
-class _MyAppState extends State<MyApp> {
-  String _printText = 'Hello World!';
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: Text('Assignment 01'),
-          ),
-          body: Column(children: [
-            Text(_printText),
-            // ignore: deprecated_member_use
-            RaisedButton(
-              child: Text('Change Text'),
-              onPressed: () {
-                setState(() {
-                  _printText = 'Hello Universe!';
-                });
-              },
-            ),
-          ])),
+        appBar: AppBar(
+          title: Text('Assignment 01'),
+        ),
+        body: TextControl(),
+      ),
     );
   }
 }
