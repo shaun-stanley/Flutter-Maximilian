@@ -75,6 +75,8 @@ class _MyAppState extends State<MyApp> {
           appBar: AppBar(
             title: Text('Stanley'),
           ),
+          // if _questionIndex < _questions.legnth, then do 'Quiz'
+          // or else do 'Result'
           body: _questionIndex < _questions.length
               ? Quiz(
                   answerQuestion: _answerQuestion,
