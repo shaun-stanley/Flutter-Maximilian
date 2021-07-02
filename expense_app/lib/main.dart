@@ -22,7 +22,10 @@ class MyHomePage extends StatelessWidget {
         title: Text('iPay'),
       ),
       body: Column(
-        children: [Card(child: Text('Chart'))],
+        children: [
+          Card(child: Text('Chart')),
+          Card(child: Text('List of Transactions'))
+        ],
       ),
     );
   }
