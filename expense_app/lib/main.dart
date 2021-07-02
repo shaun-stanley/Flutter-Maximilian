@@ -22,9 +22,23 @@ class MyHomePage extends StatelessWidget {
         title: Text('iPay'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Card(child: Text('Chart')),
-          Card(child: Text('List of Transactions'))
+          Container(
+            width: double.maxFinite,
+            child: Card(
+                child: Container(
+                  color: Colors.amber,
+                  width: 100,
+                  child: Text('Chart'),
+                ),
+                elevation: 5),
+          ),
+          Card(
+            color: Colors.amber,
+            child: Text('List of Transactions'),
+          )
         ],
       ),
     );
