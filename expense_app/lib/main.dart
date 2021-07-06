@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import './transactions.dart';
 import 'package:flutter/material.dart';
 
@@ -46,21 +48,44 @@ class MyHomePage extends StatelessWidget {
                 child: Container(
                   color: Colors.amber,
                   width: 100,
-                  child: Text('Chart'),
+                  child: Text(
+                    'Chart',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 elevation: 5),
           ),
           Column(
             children: transactions.map((tx) {
               return Card(
+                elevation: 5,
                 child: Row(
                   children: <Widget>[
                     Container(
+                      margin: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.amber, width: 2),
+                      ),
+                      padding: EdgeInsets.all(5),
                       child: Text(
                         tx.amount.toString(),
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Column()
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          tx.title,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(tx.date.toString()),
+                      ],
+                    )
                   ],
                 ),
               );
