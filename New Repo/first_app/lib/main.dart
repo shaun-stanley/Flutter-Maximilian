@@ -41,7 +41,6 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Question(questions[questionIndex]),
             RaisedButton(
