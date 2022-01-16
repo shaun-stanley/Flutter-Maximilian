@@ -27,10 +27,19 @@ class _MyAppState extends State<MyApp> {
   }
 
   // List of questions
-  var questions = <String>[
-    "What's your name?",
-    "What's your favorite color?",
-    "When's your birthday?"
+  var questions = [
+    {
+      "questionText": "What's your favorite color?",
+      "answers": ["Green", "Pink", "Blue"],
+    },
+    {
+      "questionText": "What's your name?",
+      "answers": ["Shaun", "Max", "Deb"],
+    },
+    {
+      "questionText": "Where do you live?",
+      "answers": ["Norway", "Mumbai", "Kolkata"],
+    },
   ];
 
   @override
@@ -43,19 +52,11 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Question(questions[questionIndex]),
-            RaisedButton(
-              child: Text("Answer 01"),
-              onPressed: answerQuestion,
-            ),
-            RaisedButton(
-              child: Text("Answer 01"),
-              onPressed: null,
-            ),
-            RaisedButton(
-              child: Text("Answer 01"),
-              onPressed: null,
-            ),
+            Question(questions[questionIndex]['questionText']),
+            ...(questions[questionIndex]['answers'] as List<String>)
+                .map((answer) {
+              return Answer(answerQuestion, answer);
+            }).toList()
           ],
         ),
       ),
