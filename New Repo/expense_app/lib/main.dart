@@ -23,7 +23,8 @@ class MyHomePage extends StatelessWidget {
           children: [
             Card(
               child: Text("Hey"),
-            )
+            ),
+            Card(child: Text("List of Transactions")),
           ],
         ));
   }
