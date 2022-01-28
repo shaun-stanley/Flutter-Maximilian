@@ -18,6 +18,12 @@ class MyHomePage extends StatelessWidget {
     Transaction(
       id: 't1',
       title: "Apple Arcade",
+      amount: 9.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't2',
+      title: "Apple Music",
       amount: 4.99,
       date: DateTime.now(),
     )
