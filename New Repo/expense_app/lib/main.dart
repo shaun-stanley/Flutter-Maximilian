@@ -30,6 +30,14 @@ class MyHomePage extends StatelessWidget {
     )
   ];
 
+  // Variables to store userInput
+  // String titleInput;
+  // String amountInput;
+
+  // Alternative userInput
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +50,32 @@ class MyHomePage extends StatelessWidget {
               width: double.infinity,
               child: Card(
                 child: Text("Graphs"),
+              ),
+            ),
+            Card(
+              elevation: 5,
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Title'),
+                      controller: titleController,
+                    ),
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Amount'),
+                      controller: amountController,
+                    ),
+                    FlatButton(
+                      child: Text('Add Transaction'),
+                      textColor: Colors.blue,
+                      onPressed: () {
+                        print(
+                            titleController.text + ' ' + amountController.text);
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
             Column(
