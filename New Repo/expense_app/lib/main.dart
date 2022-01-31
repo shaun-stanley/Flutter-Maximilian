@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  // Local list of transactions
   final List transactions = [
     Transaction(
       id: 't1',
@@ -57,6 +58,7 @@ class MyHomePage extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.all(10),
                 child: Column(
+                  // Place to add transactions
                   children: [
                     TextField(
                       decoration: InputDecoration(labelText: 'Title'),
@@ -66,6 +68,7 @@ class MyHomePage extends StatelessWidget {
                       decoration: InputDecoration(labelText: 'Amount'),
                       controller: amountController,
                     ),
+                    // Button to submit transaction details
                     FlatButton(
                       child: Text('Add Transaction'),
                       textColor: Colors.blue,
@@ -79,6 +82,7 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             Column(
+              // Show list of transactions added in a card view
               children: transactions.map((tx) {
                 return Card(
                   elevation: 5,
